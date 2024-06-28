@@ -4,6 +4,6 @@ export class User implements Prisma.UserCreateInput {
   email: string;
   name?: string;
   password: string;
-  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput;
+  // blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput;
   comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput;
 }

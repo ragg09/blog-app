@@ -10,6 +10,5 @@ export class UserController {
   @Post('register')
   async create(@Body() postData: User) {
     return this.userService.createUser(postData);
-    // return 'working asd';
   }
 }
