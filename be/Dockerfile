@@ -1,14 +1,15 @@
 FROM node:18-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /be/app
 
 COPY package*.json ./
 
 RUN npm install
 
-COPY . .
+# Install the nest package globally
+RUN npm i -g @nestjs/cli
 
-RUN npm run build
+COPY . .
 
 EXPOSE 3005
 

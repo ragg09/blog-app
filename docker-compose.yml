@@ -9,12 +9,18 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
 
-  nest:
-    build: ./be
+  nest-be:
+    container_name: nest-be
+    build:
+      context: ./be
+      dockerfile: Dockerfile
     ports:
       - "3005:3000"
     depends_on:
       - mysql
+    volumes:
+      - ./be:/be/app
+      - /be/app/node_modules
     environment:
       DATABASE_URL: mysql://root:password@mysql:3306/blog-db
 
