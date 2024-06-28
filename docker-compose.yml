@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.0.33
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: blog-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  nest:
+    build: ./be
+    ports:
+      - "3005:3000"
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_URL: mysql://root:password@mysql:3306/blog-db
+
+volumes:
+  mysql-data:
